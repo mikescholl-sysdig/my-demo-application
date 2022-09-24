@@ -34,7 +34,7 @@ jobs:
       id: date
       run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
 
-    - name: Build ${{ env.APP_NAME }} image
+    - name: Build image for scanning
       uses: docker/build-push-action@v3
       with:
         context: .
@@ -53,4 +53,15 @@ jobs:
           SECURE_API_TOKEN=${{ secrets.SYSDIG_SECURE_API_TOKEN }} ./sysdig-cli-scanner --loglevel=debug --console-log --apiurl https://us2.app.sysdig.com docker://${TAG} 
         done
       shell: bash
- 
+      
+    - name: Log in to registry
+      # This is where you will update the PAT to GITHUB_TOKEN
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+
+    - name: Push image
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
