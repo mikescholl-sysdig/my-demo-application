@@ -1,2 +1,3 @@
 # my-demo-application
 Demo Application used for TKO Training
+[![Deploy Application](https://github.com/mikescholl-sysdig/my-demo-application/actions/workflows/deploy_app.yaml/badge.svg?event=release)](https://github.com/mikescholl-sysdig/my-demo-application/actions/workflows/deploy_app.yaml) [![Build Application](https://github.com/mikescholl-sysdig/my-demo-application/actions/workflows/build_app.yaml/badge.svg)](https://github.com/mikescholl-sysdig/my-demo-application/actions/workflows/build_app.yaml)
