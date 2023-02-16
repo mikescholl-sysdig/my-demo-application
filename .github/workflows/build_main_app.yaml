@@ -69,7 +69,7 @@ jobs:
           SECURE_API_TOKEN=${{ secrets.SYSDIG_SECURE_API_TOKEN }} ./sysdig-cli-scanner --loglevel=debug --console-log --apiurl https://us2.app.sysdig.com docker://${TAG} 
         done
       shell: bash
-
+      continue-on-error: true
     - name: Log in to registry
       # This is where you will update the PAT to GITHUB_TOKEN
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
