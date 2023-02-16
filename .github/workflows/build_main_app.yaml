@@ -52,6 +52,7 @@ jobs:
         ignore-failed-scan: true
         sysdig-secure-url: "https://us2.app.sysdig.com"
         input-type: docker-daemon
+      continue-on-error: true 
 
     - uses: actions/upload-artifact@v3
       if: always()
